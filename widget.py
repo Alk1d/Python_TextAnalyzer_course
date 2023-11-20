@@ -2,9 +2,7 @@
 import sys
 
 from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
-from pprint import pprint
-from collections import Counter
-import re
+from PySide6.QtGui import QTextCursor
 import time
 
 # Important:
@@ -22,30 +20,56 @@ class Widget(QWidget):
         self.ui.ChooseFileButton.clicked.connect(self.ChooseFileButton_pressed)
         self.ui.ResetFileButton.clicked.connect(self.ResetFileButton_pressed)
 
-    def counter(self, filepath, alphabet):
+    def counter(self, filepath):
+        lines = 0
+        words = 0
+        symbols = 0
+        file = open(filepath, "r", encoding="utf-8")
+        for line in file:
+            lines += 1
+            words += len(line.split())
+            symbols += len(line)
+        self.ui.LinesLineEdit.setText(str(lines))
+        self.ui.WordsLineEdit.setText(str(words))
+        self.ui.SymbolsLineEdit.setText(str(symbols))
+        file.close()
 
-        with open(filepath, "r", encoding="utf-8") as f:
-            text = f.read().lower()
-            lines = 0
-            words = 0
-            symbols = 0
-            file = open(filepath, "r", encoding="utf-8")
-            for line in file:
-                lines += 1
-                words += len(line.split())
-                symbols += len(line)
-            self.ui.LinesLineEdit.setText(str(lines))
-            self.ui.WordsLineEdit.setText(str(words))
-            self.ui.SymbolsLineEdit.setText(str(symbols))
 
-        counter_letters = Counter(dict.fromkeys(alphabet,0))
-        find_letters = re.findall(r'[а-я]',text)
-        counter_letters.update(Counter(find_letters))
-        return counter_letters
 
     def ChooseFileButton_pressed(self):
         print("Choose button pressed")
-        self.open_dialog_box()
+        filename = QFileDialog.getOpenFileName()
+        filepath = filename[0]
+        print(filepath)
+
+        read_time = time.time()
+        text = open(filepath, encoding="utf-8").read()
+        self.ui.ReadingTimeLineEdit.setText(" ""--- %s seconds ---" % (time.time() - read_time))
+
+        text_time = time.time()
+
+
+
+        #previous_cursor_pos = self.ui.textEdit.textCursor()
+        # self.ui.textEdit.moveCursor(QTextCursor.End)
+        # self.ui.textEdit.insertPlainText(text)
+        #self.ui.textEdit.setTextCursor(previous_cursor_pos)
+
+
+        max_length_text = self.ui.Symbols_amountLineEdit.text()
+        max_length = int(max_length_text)
+        if len(text) > max_length:
+            print("limit hitted, slicing text")
+            text = text[:max_length]
+        self.ui.textEdit.setPlainText(text)
+
+       # self.ui.textEdit.setPlainText(text)
+        self.ui.Setting_textTimeLineEdit.setText(" ""--- %s seconds ---" % (time.time() - text_time))
+        text = ""
+
+        analyze_time = time.time()
+        self.counter(filepath)
+        self.ui.AnalyzeTimeLineEdit.setText(" ""--- %s seconds ---" % (time.time() - analyze_time))
 
     def ResetFileButton_pressed(self):
         print("Reset button pressed")
@@ -53,21 +77,9 @@ class Widget(QWidget):
         self.ui.WordsLineEdit.clear()
         self.ui.SymbolsLineEdit.clear()
         self.ui.textEdit.clear()
-
-    def open_dialog_box(self):
-        filename = QFileDialog.getOpenFileName()
-        filepath = filename[0]
-        cyrillic = [chr(i) for i in range(ord('а'), ord('я') + 1)]
-        print(filepath)
-        text = open(filepath, encoding="utf-8").read()
-        self.ui.textEdit.setPlainText(text)
-        start_time = time.time()
-        letters = self.counter(filepath, cyrillic)
-        pprint(letters)
-        print("Analyze took ""--- %s seconds ---" % (time.time() - start_time))
-
-
-
+        self.ui.ReadingTimeLineEdit.clear()
+        self.ui.Setting_textTimeLineEdit.clear()
+        self.ui.AnalyzeTimeLineEdit.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

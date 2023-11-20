@@ -34,12 +34,39 @@
       <string>File</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="0">
+      <item row="2" column="0">
        <layout class="QVBoxLayout" name="FileVerticalLayout">
         <item>
-         <widget class="QTextEdit" name="textEdit"/>
+         <widget class="QPlainTextEdit" name="textEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="maximumBlockCount">
+           <number>0</number>
+          </property>
+         </widget>
         </item>
        </layout>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Set amount of symbols to print, 1mil+ is RAM-unefficient</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLineEdit" name="Symbols_amountLineEdit">
+        <property name="inputMask">
+         <string>000000000000</string>
+        </property>
+        <property name="text">
+         <string>1000000</string>
+        </property>
+        <property name="placeholderText">
+         <string>1000000 is default</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -52,24 +79,10 @@
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
+        <item row="4" column="0">
+         <widget class="QLabel" name="Setting_textLabel">
           <property name="text">
-           <string>Words:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="SymbolsLineEdit">
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="LinesLineEdit">
-          <property name="readOnly">
-           <bool>true</bool>
+           <string>Setting text time</string>
           </property>
          </widget>
         </item>
@@ -87,8 +100,64 @@
           </property>
          </widget>
         </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="ReadingLabel">
+          <property name="text">
+           <string>Reading time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="SymbolsLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="1">
          <widget class="QLineEdit" name="WordsLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Words:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="LinesLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="AnalyzeLabel">
+          <property name="text">
+           <string>Analyze time</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="ReadingTimeLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="Setting_textTimeLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QLineEdit" name="AnalyzeTimeLineEdit">
           <property name="readOnly">
            <bool>true</bool>
           </property>
