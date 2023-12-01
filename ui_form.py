@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QGroupBox, QLabel,
     QLineEdit, QPlainTextEdit, QPushButton, QSizePolicy,
-    QVBoxLayout, QWidget)
+    QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -52,10 +52,10 @@ class Ui_Widget(object):
 
         self.gridLayout_4.addLayout(self.FileVerticalLayout, 2, 0, 1, 1)
 
-        self.label_4 = QLabel(self.TextGroupBox)
-        self.label_4.setObjectName(u"label_4")
+        self.Symbols_amountLabel = QLabel(self.TextGroupBox)
+        self.Symbols_amountLabel.setObjectName(u"Symbols_amountLabel")
 
-        self.gridLayout_4.addWidget(self.label_4, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.Symbols_amountLabel, 0, 0, 1, 1)
 
         self.Symbols_amountLineEdit = QLineEdit(self.TextGroupBox)
         self.Symbols_amountLineEdit.setObjectName(u"Symbols_amountLineEdit")
@@ -69,76 +69,96 @@ class Ui_Widget(object):
         self.TextAnalyzeGroupBox.setObjectName(u"TextAnalyzeGroupBox")
         self.gridLayout_2 = QGridLayout(self.TextAnalyzeGroupBox)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.gridLayout_3 = QGridLayout()
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.Setting_textLabel = QLabel(self.TextAnalyzeGroupBox)
-        self.Setting_textLabel.setObjectName(u"Setting_textLabel")
-
-        self.gridLayout_3.addWidget(self.Setting_textLabel, 4, 0, 1, 1)
-
-        self.label_3 = QLabel(self.TextAnalyzeGroupBox)
-        self.label_3.setObjectName(u"label_3")
-
-        self.gridLayout_3.addWidget(self.label_3, 0, 0, 1, 1)
-
-        self.label = QLabel(self.TextAnalyzeGroupBox)
-        self.label.setObjectName(u"label")
-
-        self.gridLayout_3.addWidget(self.label, 2, 0, 1, 1)
-
-        self.ReadingLabel = QLabel(self.TextAnalyzeGroupBox)
-        self.ReadingLabel.setObjectName(u"ReadingLabel")
-
-        self.gridLayout_3.addWidget(self.ReadingLabel, 3, 0, 1, 1)
-
-        self.SymbolsLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
-        self.SymbolsLineEdit.setObjectName(u"SymbolsLineEdit")
-        self.SymbolsLineEdit.setReadOnly(True)
-
-        self.gridLayout_3.addWidget(self.SymbolsLineEdit, 2, 1, 1, 1)
-
-        self.WordsLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
-        self.WordsLineEdit.setObjectName(u"WordsLineEdit")
-        self.WordsLineEdit.setReadOnly(True)
-
-        self.gridLayout_3.addWidget(self.WordsLineEdit, 1, 1, 1, 1)
-
-        self.label_2 = QLabel(self.TextAnalyzeGroupBox)
-        self.label_2.setObjectName(u"label_2")
-
-        self.gridLayout_3.addWidget(self.label_2, 1, 0, 1, 1)
-
-        self.LinesLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
-        self.LinesLineEdit.setObjectName(u"LinesLineEdit")
-        self.LinesLineEdit.setReadOnly(True)
-
-        self.gridLayout_3.addWidget(self.LinesLineEdit, 0, 1, 1, 1)
-
-        self.AnalyzeLabel = QLabel(self.TextAnalyzeGroupBox)
-        self.AnalyzeLabel.setObjectName(u"AnalyzeLabel")
-
-        self.gridLayout_3.addWidget(self.AnalyzeLabel, 5, 0, 1, 1)
-
-        self.ReadingTimeLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
-        self.ReadingTimeLineEdit.setObjectName(u"ReadingTimeLineEdit")
-        self.ReadingTimeLineEdit.setReadOnly(True)
-
-        self.gridLayout_3.addWidget(self.ReadingTimeLineEdit, 3, 1, 1, 1)
-
+        self.TextAnalyzeGridLayout = QGridLayout()
+        self.TextAnalyzeGridLayout.setObjectName(u"TextAnalyzeGridLayout")
         self.Setting_textTimeLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
         self.Setting_textTimeLineEdit.setObjectName(u"Setting_textTimeLineEdit")
         self.Setting_textTimeLineEdit.setReadOnly(True)
 
-        self.gridLayout_3.addWidget(self.Setting_textTimeLineEdit, 4, 1, 1, 1)
+        self.TextAnalyzeGridLayout.addWidget(self.Setting_textTimeLineEdit, 9, 1, 1, 1)
 
         self.AnalyzeTimeLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
         self.AnalyzeTimeLineEdit.setObjectName(u"AnalyzeTimeLineEdit")
         self.AnalyzeTimeLineEdit.setReadOnly(True)
 
-        self.gridLayout_3.addWidget(self.AnalyzeTimeLineEdit, 5, 1, 1, 1)
+        self.TextAnalyzeGridLayout.addWidget(self.AnalyzeTimeLineEdit, 10, 1, 1, 1)
+
+        self.Setting_textLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.Setting_textLabel.setObjectName(u"Setting_textLabel")
+
+        self.TextAnalyzeGridLayout.addWidget(self.Setting_textLabel, 9, 0, 1, 1)
+
+        self.AnalyzeLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.AnalyzeLabel.setObjectName(u"AnalyzeLabel")
+
+        self.TextAnalyzeGridLayout.addWidget(self.AnalyzeLabel, 10, 0, 1, 1)
+
+        self.WordsLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
+        self.WordsLineEdit.setObjectName(u"WordsLineEdit")
+        self.WordsLineEdit.setReadOnly(True)
+
+        self.TextAnalyzeGridLayout.addWidget(self.WordsLineEdit, 1, 1, 1, 1)
+
+        self.SymbolsLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.SymbolsLabel.setObjectName(u"SymbolsLabel")
+
+        self.TextAnalyzeGridLayout.addWidget(self.SymbolsLabel, 4, 0, 1, 1)
+
+        self.WordsLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.WordsLabel.setObjectName(u"WordsLabel")
+
+        self.TextAnalyzeGridLayout.addWidget(self.WordsLabel, 1, 0, 1, 1)
+
+        self.SymbolsLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
+        self.SymbolsLineEdit.setObjectName(u"SymbolsLineEdit")
+        self.SymbolsLineEdit.setReadOnly(True)
+
+        self.TextAnalyzeGridLayout.addWidget(self.SymbolsLineEdit, 4, 1, 1, 1)
+
+        self.ReadingTimeLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
+        self.ReadingTimeLineEdit.setObjectName(u"ReadingTimeLineEdit")
+        self.ReadingTimeLineEdit.setReadOnly(True)
+
+        self.TextAnalyzeGridLayout.addWidget(self.ReadingTimeLineEdit, 8, 1, 1, 1)
+
+        self.LinesLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
+        self.LinesLineEdit.setObjectName(u"LinesLineEdit")
+        self.LinesLineEdit.setReadOnly(True)
+
+        self.TextAnalyzeGridLayout.addWidget(self.LinesLineEdit, 0, 1, 1, 1)
+
+        self.ReadingLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.ReadingLabel.setObjectName(u"ReadingLabel")
+
+        self.TextAnalyzeGridLayout.addWidget(self.ReadingLabel, 8, 0, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Maximum)
+
+        self.TextAnalyzeGridLayout.addItem(self.verticalSpacer, 6, 1, 1, 1)
+
+        self.LinesLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.LinesLabel.setObjectName(u"LinesLabel")
+
+        self.TextAnalyzeGridLayout.addWidget(self.LinesLabel, 0, 0, 1, 1)
+
+        self.Avg_syminwordsLabel = QLabel(self.TextAnalyzeGroupBox)
+        self.Avg_syminwordsLabel.setObjectName(u"Avg_syminwordsLabel")
+        sizePolicy = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Maximum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.Avg_syminwordsLabel.sizePolicy().hasHeightForWidth())
+        self.Avg_syminwordsLabel.setSizePolicy(sizePolicy)
+
+        self.TextAnalyzeGridLayout.addWidget(self.Avg_syminwordsLabel, 5, 0, 1, 1)
+
+        self.Avg_wordsymbolsLineEdit = QLineEdit(self.TextAnalyzeGroupBox)
+        self.Avg_wordsymbolsLineEdit.setObjectName(u"Avg_wordsymbolsLineEdit")
+        self.Avg_wordsymbolsLineEdit.setReadOnly(True)
+
+        self.TextAnalyzeGridLayout.addWidget(self.Avg_wordsymbolsLineEdit, 5, 1, 1, 1)
 
 
-        self.gridLayout_2.addLayout(self.gridLayout_3, 0, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.TextAnalyzeGridLayout, 0, 0, 1, 1)
 
 
         self.gridLayout.addWidget(self.TextAnalyzeGroupBox, 0, 0, 1, 1)
@@ -154,16 +174,17 @@ class Ui_Widget(object):
         self.ChooseFileButton.setText(QCoreApplication.translate("Widget", u"Choose file", None))
         self.ResetFileButton.setText(QCoreApplication.translate("Widget", u"Reset file", None))
         self.TextGroupBox.setTitle(QCoreApplication.translate("Widget", u"File", None))
-        self.label_4.setText(QCoreApplication.translate("Widget", u"Set amount of symbols to print, 1mil+ is RAM-unefficient", None))
+        self.Symbols_amountLabel.setText(QCoreApplication.translate("Widget", u"Set amount of symbols to print, 100mil+ is RAM-unefficient!", None))
         self.Symbols_amountLineEdit.setInputMask(QCoreApplication.translate("Widget", u"000000000000", None))
         self.Symbols_amountLineEdit.setText(QCoreApplication.translate("Widget", u"1000000", None))
         self.Symbols_amountLineEdit.setPlaceholderText(QCoreApplication.translate("Widget", u"1000000 is default", None))
         self.TextAnalyzeGroupBox.setTitle(QCoreApplication.translate("Widget", u"File analyze", None))
         self.Setting_textLabel.setText(QCoreApplication.translate("Widget", u"Setting text time", None))
-        self.label_3.setText(QCoreApplication.translate("Widget", u"Lines:", None))
-        self.label.setText(QCoreApplication.translate("Widget", u"Symbols:", None))
-        self.ReadingLabel.setText(QCoreApplication.translate("Widget", u"Reading time", None))
-        self.label_2.setText(QCoreApplication.translate("Widget", u"Words:", None))
         self.AnalyzeLabel.setText(QCoreApplication.translate("Widget", u"Analyze time", None))
+        self.SymbolsLabel.setText(QCoreApplication.translate("Widget", u"Symbols:", None))
+        self.WordsLabel.setText(QCoreApplication.translate("Widget", u"Words:", None))
+        self.ReadingLabel.setText(QCoreApplication.translate("Widget", u"Reading time", None))
+        self.LinesLabel.setText(QCoreApplication.translate("Widget", u"Lines:", None))
+        self.Avg_syminwordsLabel.setText(QCoreApplication.translate("Widget", u"<html><head/><body><p>Average symbols</p><p>in words:</p></body></html>", None))
     # retranslateUi
 

@@ -1,14 +1,14 @@
 # This Python file uses the following encoding: utf-8
-import sys
-
-from PySide6.QtWidgets import QApplication, QWidget, QFileDialog
-from PySide6.QtGui import QTextCursor
-import time
-
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py
 #     pyside2-uic form.ui -o ui_form.py
+import sys
+
+from PySide6.QtWidgets import QApplication, QWidget, QFileDialog, QErrorMessage
+
+import time
+
 from ui_form import Ui_Widget
 
 class Widget(QWidget):
@@ -24,46 +24,42 @@ class Widget(QWidget):
         lines = 0
         words = 0
         symbols = 0
-        file = open(filepath, "r", encoding="utf-8")
-        for line in file:
+        filetext = open(filepath, "r", encoding="utf-8")
+        for line in filetext:
             lines += 1
             words += len(line.split())
             symbols += len(line)
         self.ui.LinesLineEdit.setText(str(lines))
         self.ui.WordsLineEdit.setText(str(words))
         self.ui.SymbolsLineEdit.setText(str(symbols))
-        file.close()
+        self.ui.Avg_wordsymbolsLineEdit.setText(str(symbols / words))
+
+        filetext.close()
 
 
 
     def ChooseFileButton_pressed(self):
         print("Choose button pressed")
-        filename = QFileDialog.getOpenFileName()
+        filename = QFileDialog.getOpenFileName(self, "Open text file")
         filepath = filename[0]
         print(filepath)
+        error_dialog = QErrorMessage()
+        error_dialog.showMessage('Error was occured during process! Possibly no file or wrong format was chosen')
 
         read_time = time.time()
         text = open(filepath, encoding="utf-8").read()
         self.ui.ReadingTimeLineEdit.setText(" ""--- %s seconds ---" % (time.time() - read_time))
 
+        self.ui.textEdit.clear()
         text_time = time.time()
-
-
-
-        #previous_cursor_pos = self.ui.textEdit.textCursor()
-        # self.ui.textEdit.moveCursor(QTextCursor.End)
-        # self.ui.textEdit.insertPlainText(text)
-        #self.ui.textEdit.setTextCursor(previous_cursor_pos)
-
 
         max_length_text = self.ui.Symbols_amountLineEdit.text()
         max_length = int(max_length_text)
         if len(text) > max_length:
-            print("limit hitted, slicing text")
+            self.ui.textEdit.appendPlainText("Limit hitted, text is sliced!")
             text = text[:max_length]
-        self.ui.textEdit.setPlainText(text)
+        self.ui.textEdit.appendPlainText(text)
 
-       # self.ui.textEdit.setPlainText(text)
         self.ui.Setting_textTimeLineEdit.setText(" ""--- %s seconds ---" % (time.time() - text_time))
         text = ""
 
@@ -80,6 +76,7 @@ class Widget(QWidget):
         self.ui.ReadingTimeLineEdit.clear()
         self.ui.Setting_textTimeLineEdit.clear()
         self.ui.AnalyzeTimeLineEdit.clear()
+        self.ui.Avg_wordsymbolsLineEdit.clear()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

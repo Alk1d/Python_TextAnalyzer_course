@@ -49,9 +49,9 @@
        </layout>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="label_4">
+       <widget class="QLabel" name="Symbols_amountLabel">
         <property name="text">
-         <string>Set amount of symbols to print, 1mil+ is RAM-unefficient</string>
+         <string>Set amount of symbols to print, 100mil+ is RAM-unefficient!</string>
         </property>
        </widget>
       </item>
@@ -78,39 +78,32 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="4" column="0">
+       <layout class="QGridLayout" name="TextAnalyzeGridLayout">
+        <item row="9" column="1">
+         <widget class="QLineEdit" name="Setting_textTimeLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="10" column="1">
+         <widget class="QLineEdit" name="AnalyzeTimeLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
          <widget class="QLabel" name="Setting_textLabel">
           <property name="text">
            <string>Setting text time</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_3">
+        <item row="10" column="0">
+         <widget class="QLabel" name="AnalyzeLabel">
           <property name="text">
-           <string>Lines:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>Symbols:</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="ReadingLabel">
-          <property name="text">
-           <string>Reading time</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="SymbolsLineEdit">
-          <property name="readOnly">
-           <bool>true</bool>
+           <string>Analyze time</string>
           </property>
          </widget>
         </item>
@@ -121,10 +114,31 @@
           </property>
          </widget>
         </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="SymbolsLabel">
+          <property name="text">
+           <string>Symbols:</string>
+          </property>
+         </widget>
+        </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="WordsLabel">
           <property name="text">
            <string>Words:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QLineEdit" name="SymbolsLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="8" column="1">
+         <widget class="QLineEdit" name="ReadingTimeLineEdit">
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -135,29 +149,51 @@
           </property>
          </widget>
         </item>
-        <item row="5" column="0">
-         <widget class="QLabel" name="AnalyzeLabel">
+        <item row="8" column="0">
+         <widget class="QLabel" name="ReadingLabel">
           <property name="text">
-           <string>Analyze time</string>
+           <string>Reading time</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
-         <widget class="QLineEdit" name="ReadingTimeLineEdit">
-          <property name="readOnly">
-           <bool>true</bool>
+        <item row="6" column="1">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Maximum</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="LinesLabel">
+          <property name="text">
+           <string>Lines:</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
-         <widget class="QLineEdit" name="Setting_textTimeLineEdit">
-          <property name="readOnly">
-           <bool>true</bool>
+        <item row="5" column="0">
+         <widget class="QLabel" name="Avg_syminwordsLabel">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Average symbols&lt;/p&gt;&lt;p&gt;in words:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item row="5" column="1">
-         <widget class="QLineEdit" name="AnalyzeTimeLineEdit">
+         <widget class="QLineEdit" name="Avg_wordsymbolsLineEdit">
           <property name="readOnly">
            <bool>true</bool>
           </property>
