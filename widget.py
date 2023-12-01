@@ -19,6 +19,8 @@ class Widget(QWidget):
 
         self.ui.ChooseFileButton.clicked.connect(self.ChooseFileButton_pressed)
         self.ui.ResetFileButton.clicked.connect(self.ResetFileButton_pressed)
+        error_dialog = QErrorMessage()
+        error_dialog.showMessage('Error was occured during process! Possibly no file or wrong format was chosen')
 
     def counter(self, filepath):
         lines = 0
@@ -43,8 +45,7 @@ class Widget(QWidget):
         filename = QFileDialog.getOpenFileName(self, "Open text file")
         filepath = filename[0]
         print(filepath)
-        error_dialog = QErrorMessage()
-        error_dialog.showMessage('Error was occured during process! Possibly no file or wrong format was chosen')
+
 
         read_time = time.time()
         text = open(filepath, encoding="utf-8").read()
